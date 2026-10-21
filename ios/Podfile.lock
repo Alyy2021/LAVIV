@@ -1,0 +1,346 @@
+PODS:
+  - app_tracking_transparency (0.0.1):
+    - Flutter
+  - AppAuth (1.7.6):
+    - AppAuth/Core (= 1.7.6)
+    - AppAuth/ExternalUserAgent (= 1.7.6)
+  - AppAuth/Core (1.7.6)
+  - AppAuth/ExternalUserAgent (1.7.6):
+    - AppAuth/Core
+  - chottu_link (1.1.1):
+    - Flutter
+  - facebook_app_events (0.30.1):
+    - FBSDKCoreKit (~> 18.0)
+    - Flutter
+  - FBAEMKit (18.0.2):
+    - FBSDKCoreKit_Basics (= 18.0.2)
+  - FBSDKCoreKit (18.0.2):
+    - FBAEMKit (= 18.0.2)
+    - FBSDKCoreKit_Basics (= 18.0.2)
+  - FBSDKCoreKit_Basics (18.0.2)
+  - FBSDKLoginKit (18.0.2):
+    - FBSDKCoreKit (= 18.0.2)
+  - Firebase/Auth (11.15.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (~> 11.15.0)
+  - Firebase/CoreOnly (11.15.0):
+    - FirebaseCore (~> 11.15.0)
+  - Firebase/Messaging (11.15.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 11.15.0)
+  - Firebase/RemoteConfig (11.15.0):
+    - Firebase/CoreOnly
+    - FirebaseRemoteConfig (~> 11.15.0)
+  - firebase_auth (5.7.0):
+    - Firebase/Auth (= 11.15.0)
+    - firebase_core
+    - Flutter
+  - firebase_core (3.15.2):
+    - Firebase/CoreOnly (= 11.15.0)
+    - Flutter
+  - firebase_messaging (15.2.10):
+    - Firebase/Messaging (= 11.15.0)
+    - firebase_core
+    - Flutter
+  - firebase_remote_config (5.5.0):
+    - Firebase/RemoteConfig (= 11.15.0)
+    - firebase_core
+    - Flutter
+  - FirebaseABTesting (11.15.0):
+    - FirebaseCore (~> 11.15.0)
+  - FirebaseAppCheckInterop (11.15.0)
+  - FirebaseAuth (11.15.0):
+    - FirebaseAppCheckInterop (~> 11.0)
+    - FirebaseAuthInterop (~> 11.0)
+    - FirebaseCore (~> 11.15.0)
+    - FirebaseCoreExtension (~> 11.15.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 8.1)
+    - GoogleUtilities/Environment (~> 8.1)
+    - GTMSessionFetcher/Core (< 5.0, >= 3.4)
+    - RecaptchaInterop (~> 101.0)
+  - FirebaseAuthInterop (11.15.0)
+  - FirebaseCore (11.15.0):
+    - FirebaseCoreInternal (~> 11.15.0)
+    - GoogleUtilities/Environment (~> 8.1)
+    - GoogleUtilities/Logger (~> 8.1)
+  - FirebaseCoreExtension (11.15.0):
+    - FirebaseCore (~> 11.15.0)
+  - FirebaseCoreInternal (11.15.0):
+    - "GoogleUtilities/NSData+zlib (~> 8.1)"
+  - FirebaseInstallations (11.15.0):
+    - FirebaseCore (~> 11.15.0)
+    - GoogleUtilities/Environment (~> 8.1)
+    - GoogleUtilities/UserDefaults (~> 8.1)
+    - PromisesObjC (~> 2.4)
+  - FirebaseMessaging (11.15.0):
+    - FirebaseCore (~> 11.15.0)
+    - FirebaseInstallations (~> 11.0)
+    - GoogleDataTransport (~> 10.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 8.1)
+    - GoogleUtilities/Environment (~> 8.1)
+    - GoogleUtilities/Reachability (~> 8.1)
+    - GoogleUtilities/UserDefaults (~> 8.1)
+    - nanopb (~> 3.30910.0)
+  - FirebaseRemoteConfig (11.15.0):
+    - FirebaseABTesting (~> 11.0)
+    - FirebaseCore (~> 11.15.0)
+    - FirebaseInstallations (~> 11.0)
+    - FirebaseRemoteConfigInterop (~> 11.0)
+    - FirebaseSharedSwift (~> 11.0)
+    - GoogleUtilities/Environment (~> 8.1)
+    - "GoogleUtilities/NSData+zlib (~> 8.1)"
+  - FirebaseRemoteConfigInterop (11.15.0)
+  - FirebaseSharedSwift (11.15.0)
+  - Flutter (1.0.0)
+  - flutter_facebook_auth (7.1.5):
+    - FBSDKLoginKit (= 18.0.2)
+    - Flutter
+  - flutter_local_notifications (0.0.1):
+    - Flutter
+  - flutter_localization (0.0.1):
+    - Flutter
+  - flutter_secure_storage (6.0.0):
+    - Flutter
+  - fluttertoast (0.0.2):
+    - Flutter
+    - Toast
+  - google_sign_in_ios (0.0.1):
+    - AppAuth (>= 1.7.4)
+    - Flutter
+    - FlutterMacOS
+    - GoogleSignIn (~> 7.1)
+    - GTMSessionFetcher (>= 3.4.0)
+  - GoogleDataTransport (10.1.1):
+    - nanopb (~> 3.30910.0)
+    - PromisesObjC (~> 2.4)
+  - GoogleSignIn (7.1.0):
+    - AppAuth (< 2.0, >= 1.7.3)
+    - GTMAppAuth (< 5.0, >= 4.1.1)
+    - GTMSessionFetcher/Core (~> 3.3)
+  - GoogleUtilities/AppDelegateSwizzler (8.1.3):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/Environment (8.1.3):
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/Logger (8.1.3):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/Network (8.1.3):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Privacy
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (8.1.3)":
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/Privacy (8.1.3)
+  - GoogleUtilities/Reachability (8.1.3):
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Privacy
+  - GoogleUtilities/UserDefaults (8.1.3):
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Privacy
+  - GTMAppAuth (4.1.1):
+    - AppAuth/Core (~> 1.7)
+    - GTMSessionFetcher/Core (< 4.0, >= 3.3)
+  - GTMSessionFetcher (3.5.0):
+    - GTMSessionFetcher/Full (= 3.5.0)
+  - GTMSessionFetcher/Core (3.5.0)
+  - GTMSessionFetcher/Full (3.5.0):
+    - GTMSessionFetcher/Core
+  - image_picker_ios (0.0.1):
+    - Flutter
+  - nanopb (3.30910.0):
+    - nanopb/decode (= 3.30910.0)
+    - nanopb/encode (= 3.30910.0)
+  - nanopb/decode (3.30910.0)
+  - nanopb/encode (3.30910.0)
+  - NWWebSocket (0.5.10)
+  - package_info_plus (0.4.5):
+    - Flutter
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - PromisesObjC (2.4.1)
+  - pusher_channels_flutter (0.0.1):
+    - Flutter
+    - PusherSwift (~> 10.1.5)
+  - PusherSwift (10.1.10):
+    - NWWebSocket (~> 0.5.10)
+    - PusherTweetNacl (~> 1.2.0)
+  - PusherTweetNacl (1.2.0)
+  - RecaptchaInterop (101.0.0)
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - sqflite_darwin (0.0.4):
+    - Flutter
+    - FlutterMacOS
+  - Toast (4.1.1)
+  - url_launcher_ios (0.0.1):
+    - Flutter
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
+  - chottu_link (from `.symlinks/plugins/chottu_link/ios`)
+  - facebook_app_events (from `.symlinks/plugins/facebook_app_events/ios`)
+  - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
+  - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
+  - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
+  - firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_facebook_auth (from `.symlinks/plugins/flutter_facebook_auth/ios`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
+  - flutter_localization (from `.symlinks/plugins/flutter_localization/ios`)
+  - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
+  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/darwin`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - pusher_channels_flutter (from `.symlinks/plugins/pusher_channels_flutter/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
+  - sqflite_darwin (from `.symlinks/plugins/sqflite_darwin/darwin`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/darwin`)
+
+SPEC REPOS:
+  trunk:
+    - AppAuth
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+    - FBSDKLoginKit
+    - Firebase
+    - FirebaseABTesting
+    - FirebaseAppCheckInterop
+    - FirebaseAuth
+    - FirebaseAuthInterop
+    - FirebaseCore
+    - FirebaseCoreExtension
+    - FirebaseCoreInternal
+    - FirebaseInstallations
+    - FirebaseMessaging
+    - FirebaseRemoteConfig
+    - FirebaseRemoteConfigInterop
+    - FirebaseSharedSwift
+    - GoogleDataTransport
+    - GoogleSignIn
+    - GoogleUtilities
+    - GTMAppAuth
+    - GTMSessionFetcher
+    - nanopb
+    - NWWebSocket
+    - PromisesObjC
+    - PusherSwift
+    - PusherTweetNacl
+    - RecaptchaInterop
+    - Toast
+
+EXTERNAL SOURCES:
+  app_tracking_transparency:
+    :path: ".symlinks/plugins/app_tracking_transparency/ios"
+  chottu_link:
+    :path: ".symlinks/plugins/chottu_link/ios"
+  facebook_app_events:
+    :path: ".symlinks/plugins/facebook_app_events/ios"
+  firebase_auth:
+    :path: ".symlinks/plugins/firebase_auth/ios"
+  firebase_core:
+    :path: ".symlinks/plugins/firebase_core/ios"
+  firebase_messaging:
+    :path: ".symlinks/plugins/firebase_messaging/ios"
+  firebase_remote_config:
+    :path: ".symlinks/plugins/firebase_remote_config/ios"
+  Flutter:
+    :path: Flutter
+  flutter_facebook_auth:
+    :path: ".symlinks/plugins/flutter_facebook_auth/ios"
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
+  flutter_localization:
+    :path: ".symlinks/plugins/flutter_localization/ios"
+  flutter_secure_storage:
+    :path: ".symlinks/plugins/flutter_secure_storage/ios"
+  fluttertoast:
+    :path: ".symlinks/plugins/fluttertoast/ios"
+  google_sign_in_ios:
+    :path: ".symlinks/plugins/google_sign_in_ios/darwin"
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  pusher_channels_flutter:
+    :path: ".symlinks/plugins/pusher_channels_flutter/ios"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
+  sqflite_darwin:
+    :path: ".symlinks/plugins/sqflite_darwin/darwin"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/darwin"
+
+SPEC CHECKSUMS:
+  app_tracking_transparency: e169b653478da7bb15a6c61209015378ca73e375
+  AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
+  chottu_link: 276597fed59abd1014123ac3a1efe575a1ac9b03
+  facebook_app_events: 6f40b1282a78f50e2439a9117e06a23715c144b1
+  FBAEMKit: 56a4f5a9607957b547b6458b17a98c5bb2736367
+  FBSDKCoreKit: 54f1240567e16862ab71c53c33dc347db5c524c5
+  FBSDKCoreKit_Basics: eb530cd6a79030dbb11df460aafb2767bcad9028
+  FBSDKLoginKit: 6a70798793e499335a98fab1a758d7da34af196e
+  Firebase: d99ac19b909cd2c548339c2241ecd0d1599ab02e
+  firebase_auth: 5342db41af2ba5ed32a6177d9e326eecbebda912
+  firebase_core: 99a37263b3c27536063a7b601d9e2a49400a433c
+  firebase_messaging: bf6697c61f31c7cc0f654131212ff04c0115c2c7
+  firebase_remote_config: 395d35aa770405fd0121c97382671371ea00734a
+  FirebaseABTesting: 5e9d432834aebf27ab72100d37af44dfbe8d82f7
+  FirebaseAppCheckInterop: 06fe5a3799278ae4667e6c432edd86b1030fa3df
+  FirebaseAuth: a6575e5fbf46b046c58dc211a28a5fbdd8d4c83b
+  FirebaseAuthInterop: 7087d7a4ee4bc4de019b2d0c240974ed5d89e2fd
+  FirebaseCore: efb3893e5b94f32b86e331e3bd6dadf18b66568e
+  FirebaseCoreExtension: edbd30474b5ccf04e5f001470bdf6ea616af2435
+  FirebaseCoreInternal: 9afa45b1159304c963da48addb78275ef701c6b4
+  FirebaseInstallations: 317270fec08a5d418fdbc8429282238cab3ac843
+  FirebaseMessaging: 3b26e2cee503815e01c3701236b020aa9b576f09
+  FirebaseRemoteConfig: b496646b82855e174a7f1e354c65e0e913085168
+  FirebaseRemoteConfigInterop: 1c6135e8a094cc6368949f5faeeca7ee8948b8aa
+  FirebaseSharedSwift: e17c654ef1f1a616b0b33054e663ad1035c8fd40
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  flutter_facebook_auth: 08ab1a6be157d7fce8348b881787e7608f763267
+  flutter_local_notifications: df98d66e515e1ca797af436137b4459b160ad8c9
+  flutter_localization: f43b18844a2b3d2c71fd64f04ffd6b1e64dd54d4
+  flutter_secure_storage: d33dac7ae2ea08509be337e775f6b59f1ff45f12
+  fluttertoast: e9a18c7be5413da53898f660530c56f35edfba9c
+  google_sign_in_ios: 07375bfbf2620bc93a602c0e27160d6afc6ead38
+  GoogleDataTransport: a24e58982ab3ba2f64d79613e027fe7f57e88539
+  GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
+  GoogleUtilities: 4e0c2ad9fa0d0d18b5c4df8bf57b461cba35b0bb
+  GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
+  GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
+  image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
+  nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
+  NWWebSocket: 873eb4b18acd0317da70cdba388d792a3187ce00
+  package_info_plus: c0502532a26c7662a62a356cebe2692ec5fe4ec4
+  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+  PromisesObjC: 752c3227f599e3467650e47ea36f433eeb10c273
+  pusher_channels_flutter: 01297e6e420e0ad61a6e5901e27bb272a6f58ec2
+  PusherSwift: 6022fe6584b4317dc5c177091292b2a4d80a8c35
+  PusherTweetNacl: 015f56f2cf010e718703f2bd9bca66fdcc91b208
+  RecaptchaInterop: 11e0b637842dfb48308d242afc3f448062325aba
+  shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
+  sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
+  Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
+  url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
+  webview_flutter_wkwebview: a4af96a051138e28e29f60101d094683b9f82188
+
+PODFILE CHECKSUM: 30d505a55b9838f3cd050f155dedca6853864f4d
+
+COCOAPODS: 1.16.2

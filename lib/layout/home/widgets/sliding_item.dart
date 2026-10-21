@@ -73,6 +73,11 @@ class _SlidingItemState extends State<SlidingItem> {
   }
 
   Widget _buildBannerItem(banner_model.Data banner, {bool isAsset = false}) {
+    final size = MediaQuery.of(context).size;
+    final isTablet = size.shortestSide >= 600;
+    final bannerWidth = isTablet ? 550.0 : 320.w;
+    final bannerHeight = isTablet ? 240.0 : 200.h;
+
     return GestureDetector(
       onTap: () {
         if (!isAsset) {
@@ -82,8 +87,8 @@ class _SlidingItemState extends State<SlidingItem> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: SizedBox(
-          width: 320.w,
-          height: 200.h,
+          width: bannerWidth,
+          height: bannerHeight,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Hero(
@@ -124,6 +129,11 @@ class _SlidingItemState extends State<SlidingItem> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final isTablet = size.shortestSide >= 600;
+    final bannerHeight = isTablet ? 240.0 : 200.h;
+    final bannerWidth = isTablet ? 550.0 : 320.w;
+
     return BlocBuilder<BannersCubit, BannersState>(
       builder: (context, state) {
         final cubit = context.read<BannersCubit>();
@@ -133,7 +143,7 @@ class _SlidingItemState extends State<SlidingItem> {
             baseColor: Colors.grey[300]!,
             highlightColor: Colors.grey[100]!,
             child: SizedBox(
-              height: 200.h,
+              height: bannerHeight,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 3,
@@ -141,8 +151,8 @@ class _SlidingItemState extends State<SlidingItem> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Container(
-                      width: 320.w,
-                      height: 200.h,
+                      width: bannerWidth,
+                      height: bannerHeight,
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(15),
@@ -161,7 +171,7 @@ class _SlidingItemState extends State<SlidingItem> {
           }
 
           return SizedBox(
-            height: 200.h,
+            height: bannerHeight,
             child: ListView.builder(
               controller: _scrollController,
               padding: const EdgeInsets.symmetric(vertical: 8),
@@ -178,7 +188,7 @@ class _SlidingItemState extends State<SlidingItem> {
           if (cubit.cachedBanners?.data?.isNotEmpty == true) {
             final cachedBanners = cubit.cachedBanners!.data!;
             return SizedBox(
-              height: 200.h,
+              height: bannerHeight,
               child: ListView.builder(
                 controller: _scrollController,
                 padding: const EdgeInsets.symmetric(vertical: 8),
@@ -202,6 +212,10 @@ class _SlidingItemState extends State<SlidingItem> {
   }
 
   Widget _buildStaticBanners() {
+    final size = MediaQuery.of(context).size;
+    final isTablet = size.shortestSide >= 600;
+    final bannerHeight = isTablet ? 240.0 : 200.h;
+
     final List<banner_model.Data> staticBanners = [
       banner_model.Data(
           id: -1,
@@ -226,7 +240,7 @@ class _SlidingItemState extends State<SlidingItem> {
     ];
 
     return SizedBox(
-      height: 200.h,
+      height: bannerHeight,
       child: ListView.builder(
         controller: _scrollController,
         padding: const EdgeInsets.symmetric(vertical: 8),

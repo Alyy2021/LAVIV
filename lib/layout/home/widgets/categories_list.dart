@@ -26,8 +26,15 @@ class _CategoriesListState extends State<CategoriesList> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isTablet = size.shortestSide >= 600;
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
+
+    // iPad / Tablet gets 6 columns (or 8 in landscape), small phones get 3 in portrait / 6 in landscape
+    final int crossAxisCount = isTablet ? (isPortrait ? 6 : 8) : (isPortrait ? 3 : 6);
+    final double childAspectRatio = isTablet ? (isPortrait ? 0.75 : 0.85) : (isPortrait ? 0.6 : 0.8);
+    final double imageBoxSize = isTablet ? 90.0 : (size.height * 0.1);
+    final double fontSize = isTablet ? 15.0 : (size.width * 0.035).clamp(10.0, 15.0);
 
     return BlocBuilder<GetCategoriesCubit, GetCategoriesState>(
       builder: (context, state) {
@@ -38,10 +45,10 @@ class _CategoriesListState extends State<CategoriesList> {
             highlightColor: Colors.grey[100]!,
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: isPortrait ? 0.6 : 0.8,
-                crossAxisCount: isPortrait ? 3 : 6,
-                mainAxisSpacing: size.height * 0.001,
-                crossAxisSpacing: size.width * 0.01,
+                childAspectRatio: childAspectRatio,
+                crossAxisCount: crossAxisCount,
+                mainAxisSpacing: isTablet ? 12 : size.height * 0.001,
+                crossAxisSpacing: isTablet ? 12 : size.width * 0.01,
               ),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -49,7 +56,7 @@ class _CategoriesListState extends State<CategoriesList> {
               itemCount: 8,
               itemBuilder: (context, index) {
                 return Container(
-                  margin: EdgeInsets.all(size.width * 0.02),
+                  margin: EdgeInsets.all(isTablet ? 6 : size.width * 0.02),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
@@ -58,23 +65,23 @@ class _CategoriesListState extends State<CategoriesList> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        height: size.height * 0.1,
-                        width: size.width * 0.25,
+                        height: imageBoxSize,
+                        width: imageBoxSize,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      SizedBox(height: size.height * 0.01),
+                      SizedBox(height: isTablet ? 8 : size.height * 0.01),
                       Container(
-                        height: size.height * 0.02,
-                        width: size.width * 0.15,
+                        height: isTablet ? 14 : size.height * 0.02,
+                        width: isTablet ? 60 : size.width * 0.15,
                         color: Colors.grey[300],
                       ),
-                      SizedBox(height: size.height * 0.005),
+                      SizedBox(height: isTablet ? 4 : size.height * 0.005),
                       Container(
-                        height: size.height * 0.02,
-                        width: size.width * 0.2,
+                        height: isTablet ? 14 : size.height * 0.02,
+                        width: isTablet ? 80 : size.width * 0.2,
                         color: Colors.grey[300],
                       ),
                     ],
@@ -94,10 +101,10 @@ class _CategoriesListState extends State<CategoriesList> {
 
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: isPortrait ? 0.6 : 0.8,
-              crossAxisCount: isPortrait ? 3 : 6,
-              mainAxisSpacing: size.height * 0.001,
-              crossAxisSpacing: size.width * 0.01,
+              childAspectRatio: childAspectRatio,
+              crossAxisCount: crossAxisCount,
+              mainAxisSpacing: isTablet ? 12 : size.height * 0.001,
+              crossAxisSpacing: isTablet ? 12 : size.width * 0.01,
             ),
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -118,26 +125,27 @@ class _CategoriesListState extends State<CategoriesList> {
                   );
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: size.width * 0.015),
+                  margin: EdgeInsets.symmetric(horizontal: isTablet ? 6 : size.width * 0.015),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CachedNetworkImage(
                         imageUrl: category.photo ?? "",
-                        height: size.height * 0.1,
-                        width: size.width * 0.25,
+                        height: imageBoxSize,
+                        width: imageBoxSize,
                         fit: BoxFit.contain,
                         errorWidget: (context, url, error) {
-                          return Icon(Icons.error, size: size.width * 0.06);
+                          return Icon(Icons.error, size: isTablet ? 30 : size.width * 0.06);
                         },
                       ),
+                      SizedBox(height: isTablet ? 6 : 4),
                       Text(
                         category.title!,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(
-                          fontSize: size.width * 0.035,
+                          fontSize: fontSize,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -153,10 +161,10 @@ class _CategoriesListState extends State<CategoriesList> {
               cubit.cachedCategories!.data!.isNotEmpty) {
             return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: isPortrait ? 0.6 : 0.8,
-                crossAxisCount: isPortrait ? 3 : 6,
-                mainAxisSpacing: size.height * 0.001,
-                crossAxisSpacing: size.width * 0.01,
+                childAspectRatio: childAspectRatio,
+                crossAxisCount: crossAxisCount,
+                mainAxisSpacing: isTablet ? 12 : size.height * 0.001,
+                crossAxisSpacing: isTablet ? 12 : size.width * 0.01,
               ),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -178,26 +186,27 @@ class _CategoriesListState extends State<CategoriesList> {
                   },
                   child: Container(
                     margin:
-                        EdgeInsets.symmetric(horizontal: size.width * 0.015),
+                        EdgeInsets.symmetric(horizontal: isTablet ? 6 : size.width * 0.015),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CachedNetworkImage(
                           imageUrl: category.photo ?? "",
-                          height: size.height * 0.1,
-                          width: size.width * 0.25,
+                          height: imageBoxSize,
+                          width: imageBoxSize,
                           fit: BoxFit.contain,
                           errorWidget: (context, url, error) {
-                            return Icon(Icons.error, size: size.width * 0.06);
+                            return Icon(Icons.error, size: isTablet ? 30 : size.width * 0.06);
                           },
                         ),
+                        SizedBox(height: isTablet ? 6 : 4),
                         Text(
                           category.title!,
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                           style: TextStyle(
-                            fontSize: size.width * 0.035,
+                            fontSize: fontSize,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -242,10 +251,10 @@ class _CategoriesListState extends State<CategoriesList> {
 
             return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: isPortrait ? 0.6 : 0.8,
-                crossAxisCount: isPortrait ? 3 : 6,
-                mainAxisSpacing: size.height * 0.001,
-                crossAxisSpacing: size.width * 0.01,
+                childAspectRatio: childAspectRatio,
+                crossAxisCount: crossAxisCount,
+                mainAxisSpacing: isTablet ? 12 : size.height * 0.001,
+                crossAxisSpacing: isTablet ? 12 : size.width * 0.01,
               ),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -267,23 +276,24 @@ class _CategoriesListState extends State<CategoriesList> {
                   },
                   child: Container(
                     margin:
-                        EdgeInsets.symmetric(horizontal: size.width * 0.015),
+                        EdgeInsets.symmetric(horizontal: isTablet ? 6 : size.width * 0.015),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
                           category["image"]!,
-                          height: size.height * 0.1,
-                          width: size.width * 0.25,
+                          height: imageBoxSize,
+                          width: imageBoxSize,
                           fit: BoxFit.contain,
                         ),
+                        SizedBox(height: isTablet ? 6 : 4),
                         Text(
                           category["title"]!,
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                           style: TextStyle(
-                            fontSize: size.width * 0.035,
+                            fontSize: fontSize,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

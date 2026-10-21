@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vegesea/cubits/get_sub_categories_cubit/get_sub_categories_cubit.dart';
 import 'package:vegesea/layout/all_products/products_screen.dart';
@@ -82,34 +83,33 @@ class _SubCategoriesGridState extends State<SubCategoriesGrid> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        final bp = ResponsiveBreakpoints.of(context);
+        final isMobile = bp.isMobile;
+        final isTablet = bp.isTablet;
+        // ignore: unused_local_variable
+        final isDesktop = bp.isDesktop;
+
         final screenSize = MediaQuery.of(context).size;
-        final screenHeight = screenSize.height;
-        final screenWidth = screenSize.width;
-
-        final crossAxisCountProducts = screenSize.width < 600
-            ? 2
-            : screenSize.width < 1200
-                ? 3
-                : 4;
-        final childAspectRatio = screenSize.width < 600 ? 0.65 : 0.85;
-        //final iconSizeProduct = screenSize.width * 0.04;
-        final fontSize = screenSize.width * 0.035;
-        final containerPadding = screenSize.width * 0.02;
-
         final double maxWidth = constraints.maxWidth;
         final double maxHeight = constraints.maxHeight;
 
-        // Calculate responsive values
-        final double gridPadding = maxWidth * 0.04;
-        final double iconSize = maxWidth * 0.08;
-        final double titleFontSize = maxWidth * 0.06;
-        final double subtitleFontSize = maxWidth * 0.045;
-        final int crossAxisCount = maxWidth < 600
-            ? 2
-            : maxWidth < 900
-                ? 3
-                : 4;
-        final double imageHeight = maxHeight * 0.15;
+        // Responsive cross-axis counts
+        final int crossAxisCountProducts = isMobile ? 2 : isTablet ? 3 : 4;
+
+        // Responsive aspect ratios
+        final double childAspectRatio = isMobile ? 0.62 : isTablet ? 0.72 : 0.82;
+
+        // Responsive sizing
+        final double gridPadding = isMobile ? 12.0 : isTablet ? 20.0 : 32.0;
+        final double iconSize = isMobile ? 22.0 : isTablet ? 28.0 : 32.0;
+        final double titleFontSize = isMobile ? 18.0 : isTablet ? 22.0 : 26.0;
+        final double subtitleFontSize = isMobile ? 13.0 : isTablet ? 15.0 : 17.0;
+        final double fontSize = isMobile ? 12.0 : isTablet ? 14.0 : 16.0;
+        final double containerPadding = isMobile ? 8.0 : isTablet ? 12.0 : 16.0;
+        final double buttonSize = isMobile ? 32.0 : isTablet ? 38.0 : 44.0;
+        final double avatarRadius = isMobile ? maxWidth * 0.1 : isTablet ? 52.0 : 64.0;
+        // ignore: unused_local_variable
+        final double imageHeight = isMobile ? maxHeight * 0.14 : maxHeight * 0.18;
 
         return BlocBuilder<GetSubCategoriesCubit, GetSubCategoriesState>(
           builder: (context, state) {
@@ -274,7 +274,7 @@ class _SubCategoriesGridState extends State<SubCategoriesGrid> {
                                           MainAxisAlignment.center,
                                       children: [
                                         CircleAvatar(
-                                          radius: maxWidth * 0.12,
+                                          radius: avatarRadius,
                                           backgroundColor: Colors.grey.shade300,
                                           child: ClipOval(
                                             child: CachedNetworkImage(
@@ -290,11 +290,11 @@ class _SubCategoriesGridState extends State<SubCategoriesGrid> {
                                               errorWidget:
                                                   (context, url, error) => Icon(
                                                 Icons.person,
-                                                size: maxWidth * 0.12,
+                                                size: avatarRadius,
                                                 color: Colors.grey,
                                               ),
-                                              width: maxWidth * 0.12 * 2,
-                                              height: maxWidth * 0.12 * 2,
+                                              width: avatarRadius * 2,
+                                              height: avatarRadius * 2,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -436,10 +436,8 @@ class _SubCategoriesGridState extends State<SubCategoriesGrid> {
                                                           productId);
                                                 },
                                                 child: Container(
-                                                  width:
-                                                      screenSize.width * 0.08,
-                                                  height:
-                                                      screenSize.width * 0.08,
+                                                  width: buttonSize,
+                                                  height: buttonSize,
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -497,10 +495,8 @@ class _SubCategoriesGridState extends State<SubCategoriesGrid> {
                                                   }
                                                 },
                                                 child: Container(
-                                                  width:
-                                                      screenSize.width * 0.08,
-                                                  height:
-                                                      screenSize.width * 0.08,
+                                                  width: buttonSize,
+                                                  height: buttonSize,
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(

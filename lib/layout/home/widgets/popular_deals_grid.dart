@@ -13,6 +13,7 @@ import 'package:vegesea/shared/shared/app_localization.dart';
 import 'package:vegesea/shared/shared/components/components.dart';
 
 import '../../../shared/shared/helper/quantity_provider.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class PopularDealsGrid extends StatefulWidget {
   const PopularDealsGrid({super.key});
@@ -47,15 +48,15 @@ class _PopularDealsGridState extends State<PopularDealsGrid> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final crossAxisCount = screenSize.width < 600
-        ? 2
-        : screenSize.width < 1200
-            ? 3
-            : 4;
-    final childAspectRatio = screenSize.width < 600 ? 0.65 : 0.85;
-    final iconSize = screenSize.width * 0.04;
-    final fontSize = screenSize.width * 0.035;
-    final containerPadding = screenSize.width * 0.02;
+    final bp = ResponsiveBreakpoints.of(context);
+    final isMobile = bp.isMobile;
+    final isTablet = bp.isTablet;
+    final crossAxisCount = isMobile ? 2 : isTablet ? 3 : 4;
+    final childAspectRatio = isMobile ? 0.62 : isTablet ? 0.72 : 0.82;
+    final iconSize = isMobile ? 20.0 : isTablet ? 28.0 : 32.0;
+    final fontSize = isMobile ? 12.0 : isTablet ? 14.0 : 16.0;
+    final containerPadding = isMobile ? 8.0 : isTablet ? 12.0 : 16.0;
+    final buttonSize = isMobile ? 30.0 : isTablet ? 36.0 : 42.0;
 
     return BlocBuilder<GetPopularDealsCubit, GetPopularDealsState>(
       builder: (context, state) {
@@ -215,8 +216,8 @@ class _PopularDealsGridState extends State<PopularDealsGrid> {
                                   quantityProvider.decreaseQuantity(productId);
                                 },
                                 child: Container(
-                                  width: screenSize.width * 0.08,
-                                  height: screenSize.width * 0.08,
+                                  width: buttonSize,
+                                  height: buttonSize,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: kMainColor,
@@ -264,8 +265,8 @@ class _PopularDealsGridState extends State<PopularDealsGrid> {
                                   }
                                 },
                                 child: Container(
-                                  width: screenSize.width * 0.08,
-                                  height: screenSize.width * 0.08,
+                                  width: buttonSize,
+                                  height: buttonSize,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: kMainColor,

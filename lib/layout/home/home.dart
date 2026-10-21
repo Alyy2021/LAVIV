@@ -44,6 +44,16 @@ class _HomePageState extends State<HomePage> {
     final size = MediaQuery.of(context).size;
     final screenHeight = size.height;
     final screenWidth = size.width;
+    final isTablet = size.shortestSide >= 600;
+
+    final double horizontalPadding = isTablet ? 24.0 : screenWidth * 0.05;
+    final double helloFontSize = isTablet ? 22.0 : screenWidth * 0.045;
+    final double nameFontSize = isTablet ? 32.0 : (screenWidth * 0.07).clamp(20.0, 32.0);
+    final double searchHeight = isTablet ? 56.0 : screenHeight * 0.07;
+    final double searchFontSize = isTablet ? 18.0 : screenWidth * 0.045;
+    final double searchIconSize = isTablet ? 32.0 : 30.0;
+    final double bannerHeight = isTablet ? 260.0 : screenHeight * 0.22;
+    final double sectionTitleSize = isTablet ? 26.0 : (screenWidth * 0.055).clamp(18.0, 26.0);
 
     return Scaffold(
       backgroundColor: const Color(0xFFF1F8E9), // Light green background from screenshot
@@ -51,7 +61,7 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: screenWidth * 0.05, vertical: screenHeight * 0.02),
+              horizontal: horizontalPadding, vertical: screenHeight * 0.02),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -66,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                         'Hello 👋',
                         style: GoogleFonts.lato(
                           textStyle: TextStyle(
-                            fontSize: screenWidth * 0.045,
+                            fontSize: helloFontSize,
                             color: Colors.black87,
                           ),
                         ),
@@ -75,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                         name ?? 'Guest',
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                            fontSize: screenWidth * 0.07,
+                            fontSize: nameFontSize,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
                           ),
@@ -117,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
                 child: Container(
-                  height: screenHeight * 0.07,
+                  height: searchHeight,
                   decoration: BoxDecoration(
                     color: const Color(0xFFE8EFF3), // Light gray background
                     borderRadius: BorderRadius.circular(35),
@@ -125,10 +135,10 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-                        child: const Icon(
+                        padding: EdgeInsets.symmetric(horizontal: isTablet ? 20.0 : screenWidth * 0.05),
+                        child: Icon(
                           Icons.search,
-                          size: 30,
+                          size: searchIconSize,
                           color: Colors.grey,
                         ),
                       ),
@@ -136,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                         'Search beverages or foods',
                         style: TextStyle(
                           color: Colors.grey[600],
-                          fontSize: screenWidth * 0.045,
+                          fontSize: searchFontSize,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -147,7 +157,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: screenHeight * 0.02),
               // Banner/Slider
               SizedBox(
-                height: screenHeight * 0.22,
+                height: bannerHeight,
                 child: const SlidingItem(),
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -160,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                     style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                         fontWeight: FontWeight.w800,
-                        fontSize: screenWidth * 0.055,
+                        fontSize: sectionTitleSize,
                       ),
                     ),
                   ),
@@ -168,9 +178,9 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       navigateAndFinish(context, const CategoriesPage());
                     },
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.chevron_right,
-                      size: 35,
+                      size: isTablet ? 40 : 35,
                       color: Colors.black87,
                     ),
                   ),

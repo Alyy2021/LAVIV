@@ -133,6 +133,11 @@ class _RootViewState extends State<RootView> {
 
   @override
   Widget build(BuildContext context) {
+    final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
+    final navHeight = isTablet ? 75.0 : kBottomNavigationBarHeight;
+    final navIconSize = isTablet ? 36.0 : 30.0;
+    final navFontSize = isTablet ? 14.0 : 11.sp;
+
     return Scaffold(
       backgroundColor:
           const Color(0xFFF1F8E9), // Light green background from screenshot
@@ -153,24 +158,33 @@ class _RootViewState extends State<RootView> {
             buttonBackgroundColor: kMainColor, // Green circle for selected
             backgroundColor: Colors.transparent,
             index: currentScreen,
-            height: kBottomNavigationBarHeight,
+            height: navHeight,
             items: List.generate(_icons.length, (index) {
               final bool isSelected = currentScreen == index;
               return Container(
-                padding: isSelected ? EdgeInsets.all(12.r) : EdgeInsets.zero,
+                padding: isSelected
+                    ? EdgeInsets.all(isTablet ? 16.0 : 12.r)
+                    : EdgeInsets.zero,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Transform.scale(
                       scale: isSelected ? 1.2 : 1.0,
-                      child: _icons[index],
+                      child: SizedBox(
+                        width: navIconSize,
+                        height: navIconSize,
+                        child: FittedBox(
+                          fit: BoxFit.contain,
+                          child: _icons[index],
+                        ),
+                      ),
                     ),
-                    SizedBox(height: 1.h),
+                    SizedBox(height: isTablet ? 4.0 : 1.h),
                     Text(
                       _labels[index],
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 11.sp,
+                        fontSize: navFontSize,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

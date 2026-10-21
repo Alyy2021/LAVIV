@@ -10,6 +10,7 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:short_navigation/short_navigation.dart';
 import 'package:vegesea/cubits/address_cubit/address_cubit.dart';
@@ -51,12 +52,10 @@ import 'cubits/wallet_cubit/wallet_cubit.dart';
 import 'shared/shared/helper/quantity_provider.dart';
 import 'shared/shared/Network/remote_config_service.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await RemoteConfigService().init();
-
 
   // Request permission
   FirebaseMessaging messaging = FirebaseMessaging.instance;
@@ -137,20 +136,32 @@ class MyApp extends StatelessWidget {
               builder: (context, locale) {
                 return MaterialApp(
                   navigatorKey: Go.navigatorKey,
-                    routes: {
-                      "root_view": (context) => const RootView(),
-                      "sub_categories_page": (context) =>
-                          const SubCategoriesGrid(),
-                      "product_details_page": (context) => const ProductScreen(),
-                      "order_details_page": (context) =>
-                          const OrderDetailScreen(),
-                    },
+                  routes: {
+                    "root_view": (context) => const RootView(),
+                    "sub_categories_page": (context) =>
+                        const SubCategoriesGrid(),
+                    "product_details_page": (context) => const ProductScreen(),
+                    "order_details_page": (context) =>
+                        const OrderDetailScreen(),
+                  },
 
                   debugShowCheckedModeBanner: false,
                   theme: theme,
                   //home: token != null ? const SplashScreen() :const AuthContainer(),
                   home: const AppAccessGate(),
-                  builder: EasyLoading.init(),
+                  builder: (context, child) {
+                    final responsiveChild = ResponsiveBreakpoints.builder(
+                      child: child!,
+                      breakpoints: const [
+                        Breakpoint(start: 0, end: 450, name: MOBILE),
+                        Breakpoint(start: 451, end: 800, name: TABLET),
+                        Breakpoint(start: 801, end: 1920, name: DESKTOP),
+                        Breakpoint(
+                            start: 1921, end: double.infinity, name: '4K'),
+                      ],
+                    );
+                    return EasyLoading.init()(context, responsiveChild);
+                  },
                   localizationsDelegates: const [
                     AppLocalizations.delegate,
                     GlobalMaterialLocalizations.delegate,
